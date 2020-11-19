@@ -1,20 +1,21 @@
-import { ILocalVideoTrack, IRemoteVideoTrack, ILocalAudioTrack, IRemoteAudioTrack } from "agora-rtc-sdk-ng";
+// import { ILocalVideoTrack, IRemoteVideoTrack, ILocalAudioTrack, IRemoteAudioTrack } from "agora-rtc-sdk-ng";
+import { ILocalAudioTrack, IRemoteAudioTrack } from "agora-rtc-sdk-ng";
 import React, { useRef, useEffect } from "react";
 
 export interface VideoPlayerProps {
-  videoTrack: ILocalVideoTrack | IRemoteVideoTrack | undefined;
+  // videoTrack: ILocalVideoTrack | IRemoteVideoTrack | undefined;
   audioTrack: ILocalAudioTrack | IRemoteAudioTrack | undefined;
 }
 
 const MediaPlayer = (props: VideoPlayerProps) => {
   const container = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!container.current) return;
-    props.videoTrack?.play(container.current);
-    return () => {
-      props.videoTrack?.stop();
-    };
-  }, [container, props.videoTrack]);
+  // useEffect(() => {
+  //   if (!container.current) return;
+  //   props.videoTrack?.play(container.current);
+  //   return () => {
+  //     props.videoTrack?.stop();
+  //   };
+  // }, [container, props.videoTrack]);
   useEffect(() => {
     props.audioTrack?.play();
     return () => {
@@ -22,7 +23,8 @@ const MediaPlayer = (props: VideoPlayerProps) => {
     };
   }, [props.audioTrack]);
   return (
-    <div ref={container}  className="video-player" style={{ width: "320px", height: "240px"}}></div>
+    <div />
+    // <div ref={container}  className="video-player" style={{ width: "320px", height: "240px"}}></div>
   );
 }
 
